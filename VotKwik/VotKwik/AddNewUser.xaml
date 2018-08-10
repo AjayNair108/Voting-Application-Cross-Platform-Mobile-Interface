@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="VotKwik.AddNewUser">
+	<Grid > 
+		<ActivityIndicator x:Name = "activityIndicator" IsVisible = "false" VerticalOptions = "CenterAndExpand" HorizontalOptions = "CenterAndExpand" Color = "#ec2e40"/>
+	<StackLayout IsEnabled = "true" x:Name = "grid" VerticalOptions = "FillAndExpand" HorizontalOptions= "FillAndExpand">
+		<Entry x:Name="mobile_number" Placeholder="Contact no." Keyboard="Telephone" />
+		<Button x:Name="display" Text="Display Result" Clicked="DisplayResults"/>
+		<Label x:Name="userName" />
+		<Label x:Name="aadharNo" />
+		<Label x:Name="year" />
+		<Label x:Name="lblResult" />
+	</StackLayout>
+	</Grid>
+</ContentPage>

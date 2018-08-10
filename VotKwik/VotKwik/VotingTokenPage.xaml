@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	NavigationPage.HasBackButton = "False" 
+	xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="VotKwik.VotingTokenPage">
+		<ContentPage.ToolbarItems>
+		<ToolbarItem Icon="profile.png" Clicked="Profile_Button_Clicked" Order="Primary" />
+	</ContentPage.ToolbarItems>
+		<AbsoluteLayout>
+		<ActivityIndicator x:Name = "activityIndicator" 						
+						AbsoluteLayout.LayoutBounds="0.5,0.5,100,100" 
+						 AbsoluteLayout.LayoutFlags="PositionProportional" />
+			<RelativeLayout>
+				<Image Source="bgpage.png" Opacity="1" Aspect = "Fill" />
+			</RelativeLayout>
+			<StackLayout Padding="0,55,0,0" Orientation="Vertical" HorizontalOptions="Center" 
+						 AbsoluteLayout.LayoutBounds="0.5,0.25,1,100" 
+						 AbsoluteLayout.LayoutFlags="WidthProportional">
+				<ic:CircleImage Source="vklogo.png" 
+								WidthRequest="108"
+								HeightRequest="108"
+								Aspect="AspectFill"
+								HorizontalOptions="CenterAndExpand"/>
+			</StackLayout>
+			<Entry Placeholder="Ballot Code"
+					x:Name = "ballotCode"
+					TextColor = "White"
+					PlaceholderColor="#a2a1b8"
+					HorizontalTextAlignment = "Center"
+					AbsoluteLayout.LayoutBounds = "0.5,0.56,1,0.08"
+					AbsoluteLayout.LayoutFlags = "All" />
+			<BoxView BackgroundColor="#a2a1b8" 
+					Opacity= "0.102"
+					HeightRequest = "1" 
+					HorizontalOptions="FillAndExpand" 
+					AbsoluteLayout.LayoutBounds = "0.5,0.64,1,1" 
+					AbsoluteLayout.LayoutFlags = "PositionProportional, WidthProportional" />
+			<Grid 	AbsoluteLayout.LayoutBounds = "0.5,0.75,1,0.075"
+					AbsoluteLayout.LayoutFlags = "All" >
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="2*"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+			<Label Grid.Row="0" Grid.Column="0" Text ="Create new ballot"
+					FontSize = "18" TextColor = "#a2a1b8" HorizontalTextAlignment = "Center" 
+					Margin = "7,0,-45,0"/>
+			<Button Grid.Row="0" Grid.Column="1" Text = "Click Here" 
+					Margin="-32,-10,0,0" TextColor="White" 
+					HorizontalOptions = "Start" BorderColor = "Transparent"
+					BackgroundColor = "Transparent" FontSize = "18"
+					Clicked="NewBallot_Clicked">
+						<Button.BorderRadius>
+						   <OnPlatform x:TypeArguments="x:Int32">
+		       				  <OnPlatform.Android>
+								0
+							  </OnPlatform.Android>
+		   					</OnPlatform>
+						</Button.BorderRadius>
+			</Button>
+			</Grid>
+			<StackLayout x:Name="stckButton" AbsoluteLayout.LayoutBounds="0.5, 1, 1,60"
+			AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" >
+			<Grid ColumnSpacing="0">
+				<Button Grid.Row="0" Grid.Column="1" Text="Next" 
+				HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+				Clicked="Code_Entered" TextColor="White"
+				HeightRequest="55" FontSize="20"
+				BackgroundColor="#ec2e40" Margin="-5,0,0,0"/>
+				<Button Grid.Row="0" Grid.Column="0" Text="Back" 
+				TextColor="Black" HorizontalOptions="FillAndExpand"
+				VerticalOptions="Center" HeightRequest="55"
+				FontSize="20" BackgroundColor="#999999"
+				Clicked="Back_Clicked" Margin="0,0,-5,0"/>
+			</Grid>
+			</StackLayout>
+		</AbsoluteLayout>
+
+</ContentPage>

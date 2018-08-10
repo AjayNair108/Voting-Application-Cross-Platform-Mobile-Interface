@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 	xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+	xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="VotKwik.CandidateVoteCount">
+	<Grid VerticalOptions = "FillAndExpand" HorizontalOptions = "FillAndExpand">
+		<ActivityIndicator x:Name = "activityIndicator" HorizontalOptions = "CenterAndExpand" VerticalOptions = "CenterAndExpand" />
+		<StackLayout>
+		<Label x:Name = "winnerName" Margin = "10,10,0,10" HorizontalOptions = "StartAndExpand" FontSize="16" FontAttributes="Bold" TextColor="#ec2e40"/>
+		<BoxView BackgroundColor="#a2a1b8" 
+			HeightRequest = "1" 
+			Opacity = "0.4"
+			HorizontalOptions="FillAndExpand"/>
+		<ListView x:Name="lstView"
+			HasUnevenRows = "true"
+			ItemSelected="Handle_ItemSelected">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout Orientation="Horizontal" Padding="10,10,10,10" HorizontalOptions="FillAndExpand">
+							<Grid>
+								<ActivityIndicator IsRunning="{Binding Source = {x:Reference candImage}, Path = IsLoading }" 
+									Color = "#ec2e40" 
+									HorizontalOptions = "CenterAndExpand" 
+									VerticalOptions="CenterAndExpand"/>								
+								<ic:CircleImage x:Name="candImage"  
+									Source="{Binding CandidateImage}"
+									WidthRequest="65" 
+									HeightRequest="65" 
+									Aspect = "AspectFill" HorizontalOptions="Start"/>
+							</Grid>
+
+							<Label Text="{Binding CandidateName}" HorizontalOptions = "CenterAndExpand" VerticalOptions="Center" FontSize="20" FontAttributes="Bold"/>
+							<Label Text= "{Binding VoteCount}" HorizontalOptions="End" VerticalOptions="CenterAndExpand"  FontSize="18" FontAttributes="Bold"/>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+		
+	<Button HorizontalOptions = "FillAndExpand" VerticalOptions="EndAndExpand" Text = "Main Page" 	FontSize="15" 
+					BackgroundColor ="#ec2e40" FontAttributes = "Bold" TextColor = "White" Clicked = "Handle_Clicked"/>
+
+	</StackLayout>
+
+	</Grid>
+
+</ContentPage>

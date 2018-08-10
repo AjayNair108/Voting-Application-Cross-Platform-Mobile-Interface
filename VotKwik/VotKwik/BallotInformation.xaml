@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	NavigationPage.HasNavigationBar="false"
+	xmlns:sys="clr-namespace:System;assembly=mscorlib"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="VotKwik.BallotInformation">
+
+	<AbsoluteLayout>
+<RelativeLayout >
+	<Image Source = "ballotInfo.png" Aspect="Fill" x:Name="headerImage"
+		RelativeLayout.WidthConstraint = "{ConstraintExpression
+			Type=RelativeToParent,
+			Property=Width,
+			Factor = 1}" 
+
+		RelativeLayout.HeightConstraint = "{ConstraintExpression
+			Type = RelativeToParent,
+			Property=Height,
+			Factor=0.3}"/>
+	<StackLayout x:Name="entryLayout" VerticalOptions="FillAndExpand"  Padding="0"
+			RelativeLayout.YConstraint = "{ConstraintExpression
+				Type=RelativeToView,
+				ElementName=headerImage,
+				Property=Height,
+				Factor=1}">
+
+		<TableView Intent="Form" HasUnevenRows = "true"  >
+			<TableView.Root>
+				<TableSection x:Name="title" >
+					<ViewCell>
+						<StackLayout Orientation="Horizontal" Padding="10,0,10,0" >
+							<Label Text="Ballot Title" VerticalOptions="Center" TextColor="#a2a1b8" />
+							<Entry HorizontalOptions="FillAndExpand" FontAttributes="Bold" HorizontalTextAlignment="End"
+										TextColor="#151431" x:Name="ballotTitleEntry" Keyboard="Text"/>
+						</StackLayout>
+					</ViewCell>
+					<ViewCell Height="200" >
+						<StackLayout Orientation="Horizontal" Padding="10,0,10,0">
+							<Label Text="Ballot Description" VerticalOptions="Center" TextColor="#a2a1b8"/>
+							<Editor  VerticalOptions="Fill" HorizontalOptions="FillAndExpand" FontSize="Small" TextColor="#151431"
+										x:Name="ballotDescEntry" Keyboard="Chat"/>
+						</StackLayout>
+					</ViewCell>
+					<ViewCell>
+						<StackLayout Orientation="Horizontal" Padding="10,0,10,0">
+							<Label Text = "Ballot Start Date" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#a2a1b8" />
+						<StackLayout HorizontalOptions="EndAndExpand"  >
+							<DatePicker Date="{x:Static sys:DateTime.Today}" TextColor="#151431" x:Name="ballotStartDateEntry" />
+						</StackLayout>
+					</StackLayout>
+					</ViewCell>
+					<ViewCell>
+						<StackLayout Orientation="Horizontal" Padding="10,0,10,0">
+							<Label Text = "Ballot End Date" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#a2a1b8" />
+						<StackLayout HorizontalOptions="EndAndExpand"  >
+							<DatePicker Date="{x:Static sys:DateTime.Today}" TextColor="#151431" x:Name="ballotEndDateEntry" />
+						</StackLayout>
+					</StackLayout>
+					</ViewCell>
+				</TableSection>
+			</TableView.Root>
+		</TableView>
+</StackLayout>
+</RelativeLayout>
+	<Grid 
+		AbsoluteLayout.LayoutBounds="0.5, 1, 1,AutoSize"
+		AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" >
+		<Button Text="Next" 
+		VerticalOptions="End" 
+		TextColor="White"
+		FontSize="15" 
+		BackgroundColor="#ff2d55"
+		Clicked="CandidateDetails_Clicked">
+		</Button>
+	</Grid>
+</AbsoluteLayout>
+
+	
+</ContentPage>

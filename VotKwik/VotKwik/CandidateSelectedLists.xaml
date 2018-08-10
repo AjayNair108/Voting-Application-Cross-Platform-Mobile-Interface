@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	Title="Add Candidates"
+	xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="VotKwik.CandidateSelectedLists">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Add"  Clicked="OnAddCandidate" />
+	</ContentPage.ToolbarItems>
+	<Grid VerticalOptions = "FillAndExpand" HorizontalOptions="FillAndExpand">
+		<ActivityIndicator x:Name = "activityIndicator" VerticalOptions = "CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+		IsVisible = "false" Color="#ec2e40" IsRunning="false"/>
+<StackLayout x:Name = "stckLayout">
+		<StackLayout x:Name="stckList" VerticalOptions="FillAndExpand" >
+	<ListView x:Name="candidateListView" HasUnevenRows="true">
+		<ListView.ItemTemplate>
+			<DataTemplate>
+				<ViewCell>
+					 <ViewCell.ContextActions>
+			            <MenuItem Clicked="Delete_Clicked" CommandParameter="{Binding .}" Text="Delete" />
+			         </ViewCell.ContextActions>
+					<StackLayout Orientation="Horizontal" Padding="10,3,10,0">
+						<Grid>
+							<ActivityIndicator IsRunning="{Binding Source = {x:Reference candImage}, Path = IsLoading }" 
+								Color = "#ec2e40" 
+								HorizontalOptions = "CenterAndExpand" 
+								VerticalOptions="CenterAndExpand"/>
+							<ic:CircleImage WidthRequest="60" HeightRequest="60" x:Name="candImage" Source="{Binding CandImage}" Aspect = "AspectFill"/>
+						</Grid>
+						<Label VerticalOptions="Center" FontSize="20" TextColor="Black" HorizontalOptions="CenterAndExpand" Text="{Binding CandName}" x:Name="candName"/>
+					</StackLayout>
+				</ViewCell>
+			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
+			</StackLayout>
+		<StackLayout x:Name="stckButton" VerticalOptions="End" >
+			<Grid ColumnSpacing="0">
+				<Button Grid.Row="0" Grid.Column="1" Text="Create" 
+				HorizontalOptions="FillAndExpand"
+				VerticalOptions="Center"
+				Clicked="CreateBallot_Clicked"
+				TextColor="White"
+				HeightRequest="55"
+				FontSize="20"
+				BackgroundColor="#ec2e40"
+				 Margin="-5,0,0,0"/>
+
+				<Button Grid.Row="0" Grid.Column="0" Text="Cancel" 
+				TextColor="Black"
+				HorizontalOptions="FillAndExpand"
+				VerticalOptions="Center"
+				HeightRequest="55"
+				FontSize="20"
+				BackgroundColor="#999999"
+				Clicked="Cancel_Clicked"
+				Margin="0,0,-5,0"/>
+				
+			</Grid>
+	</StackLayout>
+</StackLayout>
+		</Grid>
+</ContentPage>

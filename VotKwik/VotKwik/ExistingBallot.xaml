@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="VotKwik.ExistingBallot">
+	<Grid Padding = "0" VerticalOptions = "FillAndExpand" >
+			<RelativeLayout>
+   			    <Image Source="ExistingBallot.png" Opacity="0.8" Aspect = "Fill" />
+			</RelativeLayout>
+			<StackLayout VerticalOptions = "FillAndExpand">
+	<Label Text = "You have created the following ballots" Margin = "10,10,0,10" HorizontalOptions = "StartAndExpand" FontSize="15" FontAttributes="Bold" TextColor="White"/>
+	<BoxView BackgroundColor="#a2a1b8" 
+			HeightRequest = "1" 
+			Opacity = "0.4"
+			HorizontalOptions="FillAndExpand"/>
+	<Grid HorizontalOptions = "FillAndExpand" VerticalOptions = "FillAndExpand">		
+	<ActivityIndicator IsRunning="{Binding Source = {x:Reference listView}, Path = IsLoading }" 
+			Color = "#ec2e40" 
+			HorizontalOptions = "CenterAndExpand" 
+			VerticalOptions="CenterAndExpand"/>	
+			
+	<ListView x:Name = "listView"	
+			VerticalOptions="FillAndExpand"
+			SeparatorColor = "#a2a1b8"
+			HasUnevenRows="true"
+			ItemTapped="Handle_ItemTapped"
+			ItemSelected="Handle_ItemSelected" >
+		<ListView.ItemTemplate>
+			<DataTemplate>
+				<ViewCell>
+						<StackLayout Orientation="Vertical" Margin="10,10,10,10" Padding="10,10,10,10" BackgroundColor = "White" Opacity = "0.7" >
+							<StackLayout Orientation ="Horizontal">
+								<Label Text = "Title" FontAttributes = "Bold" HorizontalOptions = "Start" FontSize="15" />
+								<Label Text="{Binding VotingBallotName}" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions = "EndAndExpand" HorizontalTextAlignment="End" />
+							</StackLayout>
+							<BoxView BackgroundColor="#a2a1b8" 
+									HeightRequest = "1" 
+									Opacity = "0.4"
+									HorizontalOptions="FillAndExpand"/>
+							<StackLayout Orientation ="Horizontal">
+								<Label Text = "Ballot Code" HorizontalOptions="Start" FontSize="15" FontAttributes="Bold"/>
+								<Label Text = "{Binding BroadcastTokenNo}" HorizontalOptions= "EndAndExpand" FontSize="17" FontAttributes = "Italic" HorizontalTextAlignment="End" />
+							</StackLayout>
+						</StackLayout>
+				</ViewCell>
+			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
+
+	</Grid>
+	</StackLayout>
+	</Grid>
+
+</ContentPage>

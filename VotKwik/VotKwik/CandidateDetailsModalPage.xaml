@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	NavigationPage.HasNavigationBar="false"
+	xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="VotKwik.CandidateDetailsModalPage">
+	<StackLayout Orientation="Vertical" Padding="0">
+		<StackLayout  BackgroundColor="#3B4371" Padding="0,20,0,0" >
+		<Grid VerticalOptions = "FillAndExpand" HorizontalOptions="FillAndExpand" >
+			<ActivityIndicator IsRunning="{Binding Source = {x:Reference image}, Path = IsLoading }" 
+				Color = "#ec2e40" 
+				HorizontalOptions = "CenterAndExpand" 
+				VerticalOptions="CenterAndExpand"/>
+			
+			<ic:CircleImage
+				Source="camera4.png"
+				x:Name="image"
+				WidthRequest="150"
+				HeightRequest="150"
+				HorizontalOptions="Center" 
+				Aspect="AspectFill">
+				<Image.GestureRecognizers>
+			        <TapGestureRecognizer
+			                Tapped="Handle_Clicked"/>
+  				</Image.GestureRecognizers>
+			</ic:CircleImage>
+				</Grid>
+			<Button x:Name="pickPhoto" Text="Pick Photo" TextColor="White" FontAttributes="Bold" 
+			HorizontalOptions="Center" BorderColor="Transparent" FontSize = "20" BackgroundColor="Transparent" Clicked="Handle_Clicked" />
+		</StackLayout>
+			<StackLayout VerticalOptions="FillAndExpand" Margin="0,10,0,0">
+		<Entry Unfocused="candNameEntryUnfocused" x:Name="candNameEntry" Margin="0,10,0,0" Placeholder="Candidate Name" Keyboard="Text" PlaceholderColor="#a2a1b8" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+		<Entry x:Name="candInst" Margin="0,10,0,0" Placeholder="Candidate Institution / Party" PlaceholderColor="#a2a1b8"  Keyboard="Text" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+		<Entry x:Name="candEmailId" Margin="0,10,0,0" Placeholder="Candidate Email Id" Keyboard="Email" PlaceholderColor="#a2a1b8" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+		<Entry Unfocused="candMobNumberUnfocused" x:Name="candMobNumber" Margin="0,10,0,0" Placeholder="Candidate Mobile Number" Keyboard="Telephone" PlaceholderColor="#a2a1b8" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+		</StackLayout>	
+				<Button VerticalOptions = "End" Text="Done" Clicked="OnDoneClicked" 
+				HeightRequest="55"
+				x:Name="doneButton"
+			    BackgroundColor="#999999"
+				TextColor="Black"
+				FontSize="20" />
+		</StackLayout>
+
+</ContentPage>

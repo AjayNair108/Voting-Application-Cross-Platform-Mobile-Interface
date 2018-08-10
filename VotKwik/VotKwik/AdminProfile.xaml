@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	NavigationPage.HasBackButton="False"
+	x:Class="VotKwik.AdminProfile">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Icon="crossButton3.png" Clicked="Cancel_Button_Clicked" Order="Primary" />
+	</ContentPage.ToolbarItems>
+	<StackLayout>
+	<RelativeLayout>
+		<StackLayout BackgroundColor="#3B4371" x:Name="banner1"
+			RelativeLayout.HeightConstraint ="{ConstraintExpression
+			Type = RelativeToParent,
+			Property = Height,
+			Factor = 0.2}"
+
+			RelativeLayout.WidthConstraint ="{ConstraintExpression
+			Type = RelativeToParent,
+			Property = Width,
+			Factor = 1}" />
+		
+		<Grid x:Name="grid1"
+			RelativeLayout.YConstraint ="{ConstraintExpression
+			Type = RelativeToView,
+			ElementName = banner1,
+			Property = Height,
+			Factor = 1,
+			Constant = -60}"
+
+			RelativeLayout.XConstraint ="{ConstraintExpression
+			Type = RelativeToView,
+			ElementName = banner1,
+			Property = Width,
+			Factor = 0.37}">
+				
+		<ActivityIndicator IsRunning="{Binding Source = {x:Reference image}, Path = IsLoading }" 
+				Color = "#ec2e40" 
+				IsVisible = "false"
+				x:Name = "activityIndicator"
+				HorizontalOptions = "CenterAndExpand" 
+				VerticalOptions="CenterAndExpand"/>
+				
+		<Image Source="camera4.png" x:Name="image" WidthRequest="110" HeightRequest="110" Aspect="AspectFill">
+			<Image.GestureRecognizers>
+			    <TapGestureRecognizer
+			         Tapped="Profile_Image_Clicked"/>
+  			</Image.GestureRecognizers>
+		</Image>
+		</Grid>
+		<StackLayout RelativeLayout.YConstraint = "{ConstraintExpression
+			Type = RelativeToView,
+			ElementName = grid1,
+			Property = Height,
+			Factor = 1.5}"  
+		RelativeLayout.WidthConstraint ="{ConstraintExpression
+			Type = RelativeToParent,
+			Property = Width,
+			Factor = 1}"
+			HorizontalOptions = "FillAndExpand">
+			<StackLayout HorizontalOptions = "FillAndExpand" Orientation = "Vertical" >
+				<StackLayout VerticalOptions="CenterAndExpand"  Margin="0,10,0,10" >
+						<Label Text = "Name" FontSize = "16" HorizontalOptions = "CenterAndExpand" />
+						<Label FontAttributes="Bold" FontSize = "18" x:Name = "adminNameEntry" TextColor="Black" HorizontalOptions="CenterAndExpand" />
+				</StackLayout>
+				<BoxView BackgroundColor="#a2a1b8" HeightRequest = "1" Opacity = "0.4" HorizontalOptions="FillAndExpand"/>
+				<StackLayout VerticalOptions="CenterAndExpand" Margin="0,10,0,10">
+						<Label Text = "Aadhaar Number" FontSize = "16" HorizontalOptions = "CenterAndExpand" />
+						<Label FontAttributes="Bold" FontSize = "18"  TextColor="Black" x:Name = "aadharNumberEntry" HorizontalOptions = "CenterAndExpand" />
+				</StackLayout>
+				<BoxView BackgroundColor="#a2a1b8" HeightRequest = "1" Opacity = "0.4" HorizontalOptions="FillAndExpand"/>
+				<StackLayout VerticalOptions="CenterAndExpand" Margin="0,10,0,10">
+						<Label Text = "Mobile Number" FontSize = "16" HorizontalOptions = "CenterAndExpand" />
+						<Label FontAttributes="Bold" FontSize = "18" TextColor="Black" x:Name="contactNumberEntry" HorizontalOptions = "CenterAndExpand" />
+				</StackLayout>
+	 		</StackLayout>
+
+		</StackLayout>
+	</RelativeLayout>
+	<Button Text = "Created Ballot" 
+		FontSize = "18" 
+		FontAttributes = "Bold" 
+		BackgroundColor="#ec2e40" 
+		TextColor="White" VerticalOptions= "EndAndExpand" HorizontalOptions="FillAndExpand" Clicked="Existing_Ballot_Clicked"/>
+	</StackLayout>
+
+</ContentPage>

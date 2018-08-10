@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 	NavigationPage.HasNavigationBar="false"
+xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="VotKwik.VoteCandidate">
+<StackLayout Padding="0,10,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+	<Label x:Name = "BallotTitle" FontSize="20" TextColor="Black" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Margin="0,20,0,20"/>
+	<BoxView BackgroundColor="#a2a1b8" 
+			Opacity= "0.102"
+			HeightRequest = "1" 
+			HorizontalOptions="FillAndExpand" />
+	<Label x:Name = "BallotDesc" FontSize = "18" FontAttributes="Italic" Margin ="25,5,25,10"/>
+		<StackLayout x:Name="stckButton" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+			<Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0">
+				<Button Grid.Row="0" Grid.Column="1" Text="Continue" 
+				HorizontalOptions="FillAndExpand"
+				VerticalOptions="Center"
+				Clicked="Next_Clicked"
+				TextColor="White"
+				HeightRequest="55"
+				FontSize="20"
+				BackgroundColor="#ec2e40"
+				 Margin="-5,0,0,0"/>
+
+				<Button Grid.Row="0" Grid.Column="0" Text="Back" 
+				TextColor="Black"
+				HorizontalOptions="FillAndExpand"
+				VerticalOptions="Center"
+				HeightRequest="55"
+				FontSize="20"
+				BackgroundColor="#999999"
+				Clicked="Back_Clicked"
+				Margin="0,0,-5,0"/>
+			</Grid>
+	  </StackLayout>
+</StackLayout>
+
+</ContentPage>
